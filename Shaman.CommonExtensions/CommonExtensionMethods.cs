@@ -213,6 +213,31 @@ namespace Shaman
         }
 
 
+        public static string CaptureAfter(this string text, string prefix)
+        {
+            var idx = text.IndexOf(prefix);
+            if (idx == -1) throw new InvalidDataException();
+            return text.Substring(idx + prefix.Length);
+        }
+        public static string TryCaptureAfter(this string text, string prefix)
+        {
+            var idx = text.IndexOf(prefix);
+            if (idx == -1) return null;
+            return text.Substring(idx + prefix.Length);
+        }
+        public static string CaptureBefore(this string text, string suffix)
+        {
+            var idx = text.IndexOf(suffix);
+            if (idx == -1) throw new InvalidDataException();
+            return text.Substring(0, idx);
+        }
+        public static string TryCaptureBefore(this string text, string suffix)
+        {
+            var idx = text.IndexOf(suffix);
+            if (idx == -1) return null;
+            return text.Substring(0, idx);
+        }
+
 
 
     }
