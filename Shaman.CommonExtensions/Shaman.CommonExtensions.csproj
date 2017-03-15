@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <VersionPrefix>1.0.1.5</VersionPrefix>
+    <Authors>Andrea Martinelli</Authors>
+    <TargetFrameworks>netstandard1.3;net35;net45</TargetFrameworks>
+    <AssemblyName>Shaman.CommonExtensions</AssemblyName>
+    <AssemblyOriginatorKeyFile>ShamanOpenSourceKey.snk</AssemblyOriginatorKeyFile>
+    <SignAssembly>true</SignAssembly>
+    <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
+    <PackageId>Shaman.CommonExtensions</PackageId>
+    <PackageIconUrl>http://shaman.io/images/shaman-nuget-icon.png</PackageIconUrl>
+    <PackageProjectUrl>http://shaman.io/</PackageProjectUrl>
+    <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
+  </PropertyGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.3' ">
+    <PackageReference Include="System.Runtime" Version="4.1" />
+    <PackageReference Include="System.Runtime.Extensions" Version="4.1" />
+    <PackageReference Include="System.Text.RegularExpressions" Version="4.1.0" />
+    <PackageReference Include="System.Linq" Version="4.1.0" />
+    <PackageReference Include="System.IO" Version="4.1.0" />
+  </ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net35' ">
+    <Reference Include="System" />
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'net35' ">
+    <DefineConstants>$(DefineConstants);NET35</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+</Project>
