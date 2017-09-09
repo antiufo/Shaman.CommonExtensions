@@ -177,7 +177,40 @@ namespace Shaman
             if (obj == null) throw new ArgumentNullException();
             return collection.Contains(obj);
         }
-
+        
+        public static bool In<T>(this T obj, T option1)
+        {
+            var comparer = EqualityComparer<T>.Default;
+            if (comparer.Equals(obj, option1)) return true;
+            return false;
+        }
+        
+        public static bool In<T>(this T obj, T option1, T option2)
+        {
+            var comparer = EqualityComparer<T>.Default;
+            if (comparer.Equals(obj, option1)) return true;
+            if (comparer.Equals(obj, option2)) return true;
+            return false;
+        }
+        
+        public static bool In<T>(this T obj, T option1, T option2, T option3)
+        {
+            var comparer = EqualityComparer<T>.Default;
+            if (comparer.Equals(obj, option1)) return true;
+            if (comparer.Equals(obj, option2)) return true;
+            if (comparer.Equals(obj, option3)) return true;
+            return false;
+        }
+        
+        public static bool In<T>(this T obj, T option1, T option2, T option3, T option4)
+        {
+            var comparer = EqualityComparer<T>.Default;
+            if (comparer.Equals(obj, option1)) return true;
+            if (comparer.Equals(obj, option2)) return true;
+            if (comparer.Equals(obj, option3)) return true;
+            if (comparer.Equals(obj, option4)) return true;
+            return false;
+        }
 
 
         private static string CaptureBetween(this string text, string begin, string end, bool optional)
@@ -213,6 +246,7 @@ namespace Shaman
         }
 
 
+#if !SALTARELLE
         public static string CaptureAfter(this string text, string prefix)
         {
             var idx = text.IndexOf(prefix);
@@ -237,6 +271,7 @@ namespace Shaman
             if (idx == -1) return null;
             return text.Substring(0, idx);
         }
+#endif
 
 
 
